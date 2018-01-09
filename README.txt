@@ -1,5 +1,5 @@
 # Python/library versions
-# ------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 Python: 3.6.1 |Anaconda custom (x86_64)| (default, May 11 2017, 13:04:09)
 [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.57)]
 scipy: 0.19.1
@@ -9,7 +9,7 @@ pandas: 0.20.3
 sklearn: 0.19.0
 
 # How I chose my model:
-# ------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 #  I picked 100 random samples of each label/classification from the entire train data
 1. Used TfidfVectorizer to tokenize and vectorize data using stop words to reduce number of features
 2. Used TruncatedSVD for dimensionality reduction
@@ -20,11 +20,12 @@ sklearn: 0.19.0
 7.  Tuned the best model from step 6 to obtain optimized parameters using GridSearchCV
 
 # Other options to explore
-# ------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 1. More training samples
 2. More models and parameters
 3. More number of folds and trials for cross validation
 4. Use other feature selection techniques and compare performace
 5. Analyze the effect of scaling data before training
 6. For TruncatedSVD, I set n_components param to int(no_features/2.5). Ideally, I could use the explianed_varaince
-measure to select the number of components to use without loosing much information
+   measure to select the number of components to use without loosing much information
+7. Increase max_iter for Perceptron model to improve the fit.
