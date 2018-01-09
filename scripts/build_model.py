@@ -148,5 +148,6 @@ clf = Pipeline([
 pickle.dump(clf, open('./best_model.bin', 'wb'))
 
 with open('Result/performance.txt', "w+") as f:
-    f.write('Expected performance/Accuracy on out of sample data: ' + str(round(best_model_accuracy*100, 2)) + " %")
+    f.write('Best Model: ' + str(final_model.best_estimator_) +
+    '\n\nExpected performance/Accuracy on out of sample data: ' + str(round(best_model_accuracy*100, 2)) + " %")
 f.close()
