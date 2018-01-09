@@ -14,7 +14,7 @@ test_X = []
 
 # use preprocessors from model_pipeline to pre-process input test data
 # --------------------------------------------------------------------------------------------------------------------
-data = model_pipeline.named_steps['vec'].transform(input)
+data = model_pipeline.named_steps['vec'].transform(test_X)
 data = model_pipeline.named_steps['svd'].transform(data)
 labels = model_pipeline.named_steps['km'].predict(data)
 data = pd.DataFrame(data)

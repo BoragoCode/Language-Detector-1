@@ -15,6 +15,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.cluster import KMeans
 from sklearn.decomposition import TruncatedSVD
 from sklearn.utils import shuffle
+from sklearn.naive_bayes import MultinomialNB
 
 # Number of random trials
 NUM_TRIALS = 3#30
@@ -94,9 +95,9 @@ X = data
 # Model and parameters initialization
 # --------------------------------------------------------------------------------------------------------------------
 models_and_parameters = {
-    'LR': (LogisticRegression(), {}),
+    'LR': (LogisticRegression(), {'C': [0.1, 1, 10]}),
     'PT': (Perceptron(), {'tol': [1e-3]}),
-    'svm': (SVC(), {'C': [1, 10, 100, 1000], 'gamma': [.001, .01, .1], 'kernel': ['linear', 'rbf']})
+    'svm': (SVC(), {'C': [0.1, 1, 10], 'gamma': [.01, .1]}),
 }
 
 # Experiment to find best model that maximizes out of sample performance by nested cross validation
@@ -117,6 +118,7 @@ for name, (model, param_grid) in models_and_parameters.items():
         average_nested_scores[i] = nested_score.mean()
 
     average_score[name] = np.mean(average_nested_scores)
+    print("Finished training: " + str(name))
 
 best_model_name, best_model_accuracy = max(average_score.items(),
     key=(lambda name_averagescore: name_averagescore[1]))
