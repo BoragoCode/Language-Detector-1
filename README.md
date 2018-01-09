@@ -25,4 +25,4 @@ sklearn: 0.19.0 <br />
 5. Analyze the effect of scaling data before training
 6. For TruncatedSVD, I set n_components param to int(no_features/2.5). Ideally, I could use the explianed_varaince
    measure to select the number of components to use without loosing much information
-7. Increase max_iter when trainin the models to improve the fit.
+7. Increase max_iter when training the models to improve the fit.
