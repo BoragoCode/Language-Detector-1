@@ -17,7 +17,7 @@ sklearn: 0.19.0 <br />
 7. Picked the model with maximum average score as the best model that maximizes out of sample performance
 8.  Tuned the best model from step 6 to obtain optimized parameters using GridSearchCV
 
-# Other options to explore
+# Improvements
 1. More training samples
 2. More models and parameters
 3. More number of folds and trials for cross validation
