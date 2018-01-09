@@ -7,7 +7,7 @@ matplotlib: 2.0.2 <br />
 pandas: 0.20.3 <br />
 sklearn: 0.19.0 <br />
 
-# How I chose my model 
+# Feature and Model Selection 
 1. picked 100 random samples of each label/classification from the entire train data
 2. Used TfidfVectorizer to tokenize and vectorize data using stop words to reduce number of features
 3. Used TruncatedSVD for dimensionality reduction
