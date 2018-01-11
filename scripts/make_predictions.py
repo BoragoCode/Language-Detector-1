@@ -1,16 +1,16 @@
 import pickle
-import re
+import json
 import pandas as pd
 
 # Read data
 # --------------------------------------------------------------------------------------------------------------------
-test_X = 'Data/test_X_languages_homework.json.txt'
+test_X_input = 'Data/test_X_languages_homework.json.txt'
 model_pipeline = pickle.load(open('best_model.bin', 'rb'))
 
-with open(test_X) as f:
-    data = f.read()
 test_X = []
-[test_X.append(re.findall(':"(.*?)"}', value, re.S)[0]) for value in data.split('\n') if value]
+for line in open(test_X_input):
+    strToJason = json.loads(line)
+    test_X.append(strToJason['text'])
 
 # use preprocessors from model_pipeline to pre-process input test data
 # --------------------------------------------------------------------------------------------------------------------

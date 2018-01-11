@@ -1,8 +1,8 @@
-import re
 import pandas as pd
 import string
 import numpy as np
 import pickle
+import json
 
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import GridSearchCV
@@ -22,18 +22,20 @@ NUM_TRIALS = 3#30
 
 # Read data
 # --------------------------------------------------------------------------------------------------------------------
-train_x = 'Data/train_X_languages_homework.json.txt'
-train_y = 'Data/train_y_languages_homework.json.txt'
+train_x_input = 'Data/train_X_languages_homework.json.txt'
+train_y_input = 'Data/train_y_languages_homework.json.txt'
 
-with open(train_x) as f:
-    data = f.read()
+
 train_x = []
-[train_x.append(re.findall(':"(.*?)"}', value, re.S)[0]) for value in data.split('\n') if value]
+for line in open(train_x_input):
+    strToJason = json.loads(line)
+    train_x.append(strToJason['text'])
 
-with open(train_y) as f:
-    data = f.read()
 train_y = []
-[train_y.append(re.findall(':"(.*?)"}', value, re.S)[0]) for value in data.split('\n') if value]
+for line in open(train_y_input):
+    strToJason = json.loads(line)
+    train_y.append(strToJason['classification'])
+
 
 data = pd.DataFrame({'text': train_x, 'class': train_y})
 
