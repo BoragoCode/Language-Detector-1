@@ -39,7 +39,7 @@ for line in open(train_y_input):
 
 data = pd.DataFrame({'text': train_x, 'class': train_y})
 
-# get number of labels and pick 100 random samples of a particular each label
+# get number of labels and pick 100 random samples of each label
 # --------------------------------------------------------------------------------------------------------------------
 data = shuffle(data)
 label_count = {}
